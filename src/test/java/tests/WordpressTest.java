@@ -9,9 +9,14 @@ import pages.LoginPage;
 
 public class WordpressTest extends BaseTest {
     private static final Dotenv dotenv = Dotenv.load();
-
-    private final static String USERNAME = dotenv.get("NAME"); // using env variable
-    private final static String PASSWORD = dotenv.get("PASSWORD"); // using env variable
+   /** for using .env file locally use dotenv.get() **/
+  //  private final static String USERNAME = dotenv.get("NAME"); // using env variable
+  //  private final static String PASSWORD = dotenv.get("PASSWORD"); // using env variable
+    
+  /*** for using gitActions and Secret variables this will be used when using through gitactions and github repo **/
+    private final static String USERNAME = System.getenv("NAME"); // using environment variable
+    private final static String PASSWORD = System.getenv("PASSWORD"); // using environment variable
+    
     private final static int SWITCH_STYLE_NO = 1;
     private final static int SWITCH_SIZE_NO = 220;
 
