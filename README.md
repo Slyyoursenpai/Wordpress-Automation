@@ -1,5 +1,5 @@
 # WordPress-Automation
-Automation Test Suite of WP Dark Mode plugin in WordPress
+Automation Test Suite of WP Dark Mode plugin in WordPress using Java Maven, Aquality Framework, and POM design pattern
 
 # WordPress Automation Test Suite
 
