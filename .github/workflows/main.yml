@@ -1,4 +1,5 @@
-name: Java CI with Maven
+name: Run Selenium Tests
+
 on:
   push:
     branches:
@@ -18,8 +19,8 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '22'
-        distribution: 'adopt-openjdk'  # or 'zulu', 'temurin', etc.
+        java-version: '21'
+        distribution: 'temurin'  # or another supported distribution for JDK 21
 
     - name: Cache Maven packages
       uses: actions/cache@v3
