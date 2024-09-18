@@ -34,10 +34,11 @@ Site URL: Admin:  http://wppool-test.000.pe/wp-login.php
 2. Add all dependencies and libraries mentioned in requirements ( pom.xml already has them)
 
 3. Configure WebDriver:
-    Ensure that `chromedriver` is in your system PATH. (To explicitly call in code, user has to edit code to call web driver in BaseTest)
+    Ensure that `chromedriver` is in your system PATH. (To explicitly call in code, the user has to edit code to call web driver in BaseTest)
 
-4. Setup your own WordPress Site and install WP Dark Mode plugin. Use the Local app to create a WordPress site name it demo-site and make sure it has the URL: demo-site.local
- You can use your own name and url but url has to changed in code in prod.json as mentioned below. Keeping Dark Mode plugin uninstalled or inactive will make test check for either and install/activate it.
+4. Set up your own WordPress Site and install WP Dark Mode plugin. Use the Local app to create a WordPress site name it demo-site and make sure it has the URL: demo-site.local
+ You can use your own name and url but url has to be changed in the code in prod.json as mentioned below. Keeping Dark Mode plugin uninstalled or inactive will make the test script check for install/activate it.
+Also, login credentials are the username or password you will set during the setup of your website. My login credentials were set up with the Local app as well.
 
 ## Running Tests
 
