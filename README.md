@@ -1,2 +1,2 @@
-# Wordpress-Automation
-Automation Test Suite of WP Dark Mode plugin in Wordpress
+# WordPress-Automation
+Automation Test Suite of WP Dark Mode plugin in WordPress
