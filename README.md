@@ -6,8 +6,13 @@ Automation Test Suite of WP Dark Mode plugin in WordPress
 ## Overview
 
 This project contains an automation test suite for managing and validating the "WP Dark Mode" plugin on a WordPress site.
-Site URL: Admin:  http://wppool-test.000.pe/wp-login.php 
-          User(Frontend): http://wppool-test.000.pe/
+
+Site URL: 
+
+Admin:  http://wppool-test.000.pe/wp-login.php 
+
+User(Frontend): http://wppool-test.000.pe/
+
 ## Requirements
 
 - Java 11 or higher
