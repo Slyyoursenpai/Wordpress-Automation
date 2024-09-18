@@ -1,5 +1,4 @@
 name: Java CI with Maven
-
 on:
   push:
     branches:
@@ -20,6 +19,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '22'
+        distribution: 'adopt-openjdk'  # or 'zulu', 'temurin', etc.
 
     - name: Cache Maven packages
       uses: actions/cache@v3
