@@ -1,11 +1,3 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Java CI with Maven
 
 on:
@@ -16,25 +8,61 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 22
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '22'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-      
+
+    - name: Install Chrome
+      run: |
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+
+    - name: Clean up old ChromeDriver versions
+      run: |
+        if [ -f /usr/local/bin/chromedriver ]; then
+          sudo rm /usr/local/bin/chromedriver
+        else
+          echo "No existing ChromeDriver to clean up"
+        fi
+
+    - name: Install ChromeDriver
+      run: |
+        CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/bin/chromedriver
+        sudo chmod +x /usr/local/bin/chromedriver
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libxss1 libxtst6 libnss3 libgdk-pixbuf2.0-0
+
     - name: Set up environment variables
       run: |
         echo "NAME=${{ secrets.NAME }}" >> .env
         echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
 
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    - name: Update dependency graph
-      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+    - name: Verify Maven version
+      run: mvn -v
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Run Tests
+      run: mvn test
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: target/surefire-reports/
