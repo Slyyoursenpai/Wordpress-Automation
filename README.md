@@ -15,7 +15,7 @@ User(Frontend): http://wppool-test.000.pe/
 
 ## Requirements
 
-- Java 11 or higher
+- Java 21
 - Maven
 - ChromeDriver set as default (other browser will require mvn commands e.g: mvn test -DbrowserName = 'edge')
 - TestNG
@@ -83,8 +83,9 @@ Browser opens URL: http://wppool-test.000.pe/wp-login.php (hosted on the interne
 or for local access, go to prod.json and change the site value to your own local URL. 
 
 Example: My local site url was, http://demo-site.local/wp-admin/ . I generated using the Local app when creating the WordPress site. 
-Test Steps: 
 
+**Test Steps:
+**
 -Log in to WordPress site.
 
 -Check whether the “WP Dark Mode” Plugin is Active or not.
