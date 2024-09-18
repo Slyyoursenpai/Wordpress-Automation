@@ -6,7 +6,8 @@ Automation Test Suite of WP Dark Mode plugin in WordPress
 ## Overview
 
 This project contains an automation test suite for managing and validating the "WP Dark Mode" plugin on a WordPress site.
-
+Site URL: Admin:  http://wppool-test.000.pe/wp-login.php 
+          User(Frontend): http://wppool-test.000.pe/
 ## Requirements
 
 - Java 11 or higher
@@ -33,7 +34,10 @@ This project contains an automation test suite for managing and validating the "
 2. Add all dependencies and libraries mentioned in requirements ( pom.xml already has them)
 
 3. Configure WebDriver:
-    Ensure that `chromedriver` is in your system PATH. (To explicitly call in code, user has to edit code to call web driver in BaseTest) 
+    Ensure that `chromedriver` is in your system PATH. (To explicitly call in code, user has to edit code to call web driver in BaseTest)
+
+4. Setup your own WordPress Site and install WP Dark Mode plugin. Use the Local app to create a WordPress site name it demo-site and make sure it has the URL: demo-site.local
+ You can use your own name and url but url has to changed in code in prod.json as mentioned below. Keeping Dark Mode plugin uninstalled or inactive will make test check for either and install/activate it.
 
 ## Running Tests
 
@@ -44,6 +48,10 @@ mvn test
 or run the WordpressTest class through the IDE
 
 ##
+
+**Note:**
+While running the steps for selecting multiple switch options and saving them each time, the save button may occasionally fail to appear causing the test to fail as the save button needs to be pressed to proceed, a rerun of the test will fix this. 
+
 
 Aquality Selenium was used to automate this suite as well as a PageObjectModel Design Pattern was followed.
 
@@ -58,6 +66,40 @@ utils folder contains utility classes for formatting and use of JSON and env val
 resources folder contains env.json which has key-value pair for wait time and the site url to be used by webdriver. settings.json contains values for various web driver settings. (can be accessed or implemented via maven -DbrowserName = 'edge' to change web driver browser.
 
 The WordpressTest class is the main test driver required to run the tests. The credentials for logging in to the dashboard (username and password) are accessed through environmental variables or .env files. An .env.example is included, which contains instructions for using the variables and a .env file.
+
+## Scenario
+
+Pre-Conditions:
+Browser opens URL: http://wppool-test.000.pe/wp-login.php (hosted on the internet) 
+
+or for local access, go to prod.json and change the site value to your own local URL. 
+
+Example: My local site url was, http://demo-site.local/wp-admin/ . I generated using the Local app when creating the WordPress site. 
+Test Steps: 
+
+-Log in to WordPress site.
+
+-Check whether the “WP Dark Mode” Plugin is Active or not.
+
+-If Active, navigate to the WP Dark Mode & continue. Otherwise, Install the Plugin and Activate it.
+
+-Enable Admin Dashboard Dark Mode from Controls → Admin Panel Dark Mode.
+
+-Validate whether the dark mode is working or not on the Admin Dashboard.
+
+-Navigate to the WP Dark Mode.
+
+-From Customization → Switch Settings → Change the “Floating Switch Style” from the default selections (Select any one from the available options, except the default selected one).
+
+-From Customization → Switch Settings → Switch Customization - Select Custom Switch size & Scale it to 220.
+
+-From Customization → Switch Settings - Change the Floating Switch Position (Left).
+
+-Disable the Keyboard Shortcut from the Accessibility Settings.
+
+-From Customization → Site Animation → “Enable Page-Transition Animation” & change the Animation Effect from the default selections.
+
+-Validate whether the dark mode is working or not from the front end.
 
 
 
