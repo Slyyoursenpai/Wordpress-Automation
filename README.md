@@ -85,7 +85,7 @@ or for local access, go to prod.json and change the site value to your own local
 Example: My local site url was, http://demo-site.local/wp-admin/ . I generated using the Local app when creating the WordPress site. 
 
 **Test Steps:
-**
+
 -Log in to WordPress site.
 
 -Check whether the “WP Dark Mode” Plugin is Active or not.
