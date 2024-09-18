@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '21'
-        distribution: 'temurin'  # or another supported distribution for JDK 21
+        distribution: 'temurin'
 
     - name: Cache Maven packages
       uses: actions/cache@v3
@@ -37,6 +37,7 @@ jobs:
       env:
         NAME: ${{ secrets.NAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
+        # Add other environment variables as needed
       run: mvn test
 
     - name: Upload test results
