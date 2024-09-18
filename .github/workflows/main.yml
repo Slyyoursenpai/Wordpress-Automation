@@ -21,6 +21,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    - name: Set up environment variables
+      run: |
+        echo "NAME=${{ secrets.NAME }}" >> .env
+        echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
+
     - name: Verify Maven version
       run: mvn -v
 
