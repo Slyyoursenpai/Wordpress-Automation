@@ -111,6 +111,13 @@ Example: My local site url was, http://demo-site.local/wp-admin/ . I generated u
 -Validate whether the dark mode is working or not from the front end.
 
 
+# Demonstration and UI 
+
+![UI1](https://github.com/user-attachments/assets/9fe24f21-eafe-485d-9772-a55303dff379)
+![UI2](https://github.com/user-attachments/assets/34ac3a11-2ca4-4c5b-b6e8-2150012e6ec6)
+
+
+
 
 
 
