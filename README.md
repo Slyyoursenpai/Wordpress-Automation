@@ -23,7 +23,7 @@ User(Frontend): http://wppool-test.000.pe/
 - Selenium
 - Gson dependency
 - dotenv-java dependency
-= lombok dependency
+- lombok dependency
 - awaitility dependency
 
 ## Setup
